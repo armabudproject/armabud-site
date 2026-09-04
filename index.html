@@ -150,13 +150,12 @@
     background:rgba(255,255,255,0.035); backdrop-filter:blur(6px); border:1px solid rgba(255,255,255,0.14);
     border-radius:8px; overflow:hidden;
   }
-  .stats-row{ display:grid; grid-template-columns:repeat(4,1fr); }
+  .stats-row{ display:grid; grid-template-columns:repeat(3,1fr); }
   .stats-row .stat{ padding:44px 32px; border-right:1px solid rgba(255,255,255,0.14); }
   .stats-row .stat:last-child{ border-right:none; }
   .stats-row .stat b{ display:block; font-size:clamp(30px,3.4vw,44px); font-weight:900; color:var(--accent); font-family:'Golos Text',sans-serif; }
   .stats-row .stat span{ font-size:13.5px; color:var(--ink-soft); margin-top:8px; display:block; max-width:22ch; }
-  @media (max-width:860px){ .stats-row{ grid-template-columns:repeat(2,1fr); } .stats-row .stat:nth-child(2){ border-right:none; } }
-  @media (max-width:520px){ .stats-row{ grid-template-columns:1fr; } .stats-row .stat{ border-right:none; border-bottom:1px solid rgba(255,255,255,0.14); } .stats-row .stat:last-child{ border-bottom:none; } }
+  @media (max-width:640px){ .stats-row{ grid-template-columns:1fr; } .stats-row .stat{ border-right:none; border-bottom:1px solid rgba(255,255,255,0.14); } .stats-row .stat:last-child{ border-bottom:none; } }
 
   section{ padding:64px 0; position:relative; }
   @media (max-width:640px){ section{ padding:48px 0; } }
@@ -976,10 +975,9 @@
   <div class="wrap">
     <div class="stats-panel">
       <div class="stats-row">
-        <div class="stat"><b>11+</b><span>Проєктів у портфоліо бюро</span></div>
-        <div class="stat"><b>2</b><span>Напрямки роботи — комерція і відновлення</span></div>
-        <div class="stat"><b>5</b><span>Етапів супроводу — від концепції до нагляду</span></div>
-        <div class="stat"><b>1</b><span>Команда, що веде проєкт без субпідряду</span></div>
+        <div class="stat"><b>275+</b><span>Проєктів у портфоліо бюро</span></div>
+        <div class="stat"><b>12</b><span>Етапів супроводу</span></div>
+        <div class="stat"><b>175+</b><span>Проєктів, введених в експлуатацію</span></div>
       </div>
     </div>
   </div>
