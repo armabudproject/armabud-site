@@ -269,26 +269,30 @@
     display:flex; align-items:center; justify-content:center; transition:background .15s ease, color .15s ease, border-color .15s ease;
   }
   .proj-tab .ico svg{ width:20px; height:20px; }
-  .proj-tab .t{ font-weight:800; font-size:clamp(16px,2vw,22px); text-transform:uppercase; letter-spacing:0.01em; line-height:1.25; }
-  .proj-tab .c{ font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--ink-soft); }
+  .proj-tab .t{ font-family:'Unbounded',sans-serif; font-weight:700; font-size:clamp(17px,2.2vw,23px); text-transform:uppercase; letter-spacing:0; line-height:1.22; }
+  .proj-tab .c{ font-family:'JetBrains Mono',monospace; font-size:12px; }
 
-  /* Комерційні об'єкти — жовтий текст у синій рамці */
-  .proj-tab.cat-commercial{ border-color:#4169ff; }
-  .proj-tab.cat-commercial .ico, .proj-tab.cat-commercial .t{ color:#f0b429; }
-  .proj-tab.cat-commercial:not(.active):hover{ background:rgba(65,105,255,0.16); }
-  .proj-tab.cat-commercial.active{ background:#4169ff; }
-  .proj-tab.cat-commercial.active .ico{ border-color:#f0b429; background:rgba(240,180,41,0.14); }
-  .proj-tab.cat-commercial.active .t{ color:#f0b429; }
-  .proj-tab.cat-commercial.active .c{ color:#dbe3ff; }
+  /* Комерційні об'єкти — блакитний фон, білі букви */
+  .proj-tab.cat-commercial{ background:#2f8fff; border-color:#2f8fff; }
+  .proj-tab.cat-commercial .ico{ color:#fff; border-color:rgba(255,255,255,0.7); }
+  .proj-tab.cat-commercial .t{ color:#fff; }
+  .proj-tab.cat-commercial .c{ color:rgba(255,255,255,0.8); }
+  .proj-tab.cat-commercial:not(.active){ opacity:0.82; }
+  .proj-tab.cat-commercial:not(.active):hover{ opacity:1; background:#2680eb; }
+  .proj-tab.cat-commercial.active{ background:#1f74e0; border-color:#a9d1ff; box-shadow:0 0 0 3px rgba(47,143,255,0.22); }
+  .proj-tab.cat-commercial.active .ico{ border-color:#fff; background:rgba(255,255,255,0.16); }
+  .proj-tab.cat-commercial.active .c{ color:#dbeaff; }
 
-  /* Відновлення інфраструктури — синій текст у жовтій рамці */
-  .proj-tab.cat-recovery{ border-color:#f0b429; }
-  .proj-tab.cat-recovery .ico, .proj-tab.cat-recovery .t{ color:#4169ff; }
-  .proj-tab.cat-recovery:not(.active):hover{ background:rgba(240,180,41,0.16); }
-  .proj-tab.cat-recovery.active{ background:#f0b429; }
-  .proj-tab.cat-recovery.active .ico{ border-color:#4169ff; background:rgba(65,105,255,0.14); }
-  .proj-tab.cat-recovery.active .t{ color:#1531a8; }
-  .proj-tab.cat-recovery.active .c{ color:#0a1229; }
+  /* Бюджетні об'єкти — жовтий фон, білі букви */
+  .proj-tab.cat-recovery{ background:#d4a017; border-color:#d4a017; }
+  .proj-tab.cat-recovery .ico{ color:#fff; border-color:rgba(255,255,255,0.7); }
+  .proj-tab.cat-recovery .t{ color:#fff; text-shadow:0 1px 3px rgba(0,0,0,0.3); }
+  .proj-tab.cat-recovery .c{ color:rgba(255,255,255,0.85); }
+  .proj-tab.cat-recovery:not(.active){ opacity:0.82; }
+  .proj-tab.cat-recovery:not(.active):hover{ opacity:1; background:#bb8c14; }
+  .proj-tab.cat-recovery.active{ background:#b8890f; border-color:#ffe08a; box-shadow:0 0 0 3px rgba(212,160,23,0.22); }
+  .proj-tab.cat-recovery.active .ico{ border-color:#fff; background:rgba(255,255,255,0.16); }
+  .proj-tab.cat-recovery.active .c{ color:#ffe9b3; }
 
   @media (max-width:520px){ .proj-tabs{ gap:10px; } .proj-tab{ padding:16px 10px; } .proj-tab .t{ font-size:clamp(13px,4vw,16px); } }
 
@@ -743,13 +747,13 @@
       <div class="proj-tabs-sticky">
         <div class="proj-tabs" role="tablist">
           <button class="proj-tab cat-commercial active" data-target="cat-commercial">
-            <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 21v-6h6v6"/></svg></span>
+            <span class="ico"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="4.5" cy="6.5" r="1.7"/><path d="M1.5 13c0-1.8 1.3-3 3-3s3 1.2 3 3v1.4h-6V13z"/><circle cx="19.5" cy="6.5" r="1.7"/><path d="M16.5 13c0-1.8 1.3-3 3-3s3 1.2 3 3v1.4h-6V13z"/><circle cx="12" cy="4.8" r="1.9"/><path d="M8.5 11c0-1.9 1.5-3.4 3.5-3.4s3.5 1.5 3.5 3.4v1.6h-7V11z"/><rect x="1.5" y="15.6" width="21" height="2" rx="0.6"/><rect x="3.4" y="17.6" width="1.4" height="3.4" rx="0.4"/><rect x="19.2" y="17.6" width="1.4" height="3.4" rx="0.4"/></svg></span>
             <span class="t">Комерційні об'єкти</span>
             <span class="c">11 проєктів</span>
           </button>
           <button class="proj-tab cat-recovery" data-target="cat-recovery">
-            <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 3 7v6c0 5 4 9 9 9s9-4 9-9V7l-9-5z"/><path d="M9 12l2 2 4-4"/></svg></span>
-            <span class="t">Відновлення інфраструктури</span>
+            <span class="ico"><svg viewBox="0 0 24 20" fill="currentColor"><path d="M3 2 7 1.5 12 1 17 2.5 21 4 22 7 21 10 22 12 19 13.5 16 14 15 14 17 15.5 18 17.5 16.5 18.5 15 17 14.5 15 12 14.5 9 15 6 14 4 12.5 3 11 2 9 1.5 6 2 4Z"/></svg></span>
+            <span class="t">Бюджетні об'єкти</span>
             <span class="c">10 проєктів</span>
           </button>
         </div>
