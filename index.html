@@ -288,6 +288,23 @@
 
   @media (max-width:520px){ .proj-tabs{ gap:10px; } .proj-tab{ padding:16px 10px; } .proj-tab .t{ font-size:clamp(13px,4vw,16px); } }
 
+  /* Compact mode: kicks in while the bar is stuck to the top during scroll,
+     so it takes up far less height and doesn't hide the page underneath. */
+  .proj-tabs-sticky{ transition:padding .18s ease; }
+  .proj-tabs-sticky.compact{ padding:8px 0; }
+  .proj-tabs-sticky.compact .proj-tabs{ gap:8px; }
+  .proj-tabs-sticky.compact .proj-tab{
+    flex-direction:row; padding:8px 14px; gap:8px; border-radius:8px; border-width:1.5px;
+  }
+  .proj-tabs-sticky.compact .proj-tab .ico{ width:24px; height:24px; flex-shrink:0; }
+  .proj-tabs-sticky.compact .proj-tab .ico svg{ width:13px; height:13px; }
+  .proj-tabs-sticky.compact .proj-tab .t{ font-size:12.5px; line-height:1.2; }
+  .proj-tabs-sticky.compact .proj-tab .c{ display:none; }
+  @media (max-width:520px){
+    .proj-tabs-sticky.compact .proj-tab{ padding:7px 8px; gap:6px; }
+    .proj-tabs-sticky.compact .proj-tab .t{ font-size:11px; }
+  }
+
   .proj-track-wrap{ position:relative; }
   .proj-panel{ display:none; }
   .proj-panel.active{ display:block; }
@@ -677,7 +694,7 @@
     <h1><span class="sub-line">архітектурне бюро повного циклу</span></h1>
     <p class="lede">Комплексні рішення з архітектурного проєктування під ключ — для комерційних об'єктів і проєктів відновлення пошкодженої інфраструктури.</p>
     <div class="ctas">
-      <a class="btn primary" href="#contact">Наші послуги</a>
+      <a class="btn primary" href="#services">Наші послуги</a>
       <a class="btn ghost" href="#projects">Дивитись проєкти</a>
     </div>
   </div>
@@ -1506,6 +1523,24 @@
       document.getElementById(tab.getAttribute('data-target')).classList.add('active');
     });
   });
+
+  // shrink the sticky project-tabs bar once it's actually stuck to the top,
+  // so it stays usable without covering too much of the page while scrolling
+  var stickyBar = document.querySelector('.proj-tabs-sticky');
+  if (stickyBar){
+    var stickyTopPx = 84;
+    var onScrollCheck = function(){
+      var rect = stickyBar.getBoundingClientRect();
+      if (rect.top <= stickyTopPx + 1){
+        stickyBar.classList.add('compact');
+      } else {
+        stickyBar.classList.remove('compact');
+      }
+    };
+    document.body.addEventListener('scroll', onScrollCheck, { passive:true });
+    window.addEventListener('resize', onScrollCheck);
+    onScrollCheck();
+  }
 })();
 </script>
 
