@@ -245,31 +245,48 @@
     font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:var(--accent);
   }
   .proj-head-label h3{ margin-top:6px; font-size:clamp(17px,2.1vw,21px); color:var(--ink); }
+  .proj-scope{ position:relative; }
   .proj-tabs-sticky{
     position:sticky; top:84px; z-index:30; background:var(--bg-2);
     padding:14px 0 16px; border-bottom:1px solid var(--line);
   }
   .proj-tabs{
-    display:grid; grid-template-columns:repeat(2,1fr); gap:1px; background:var(--line-strong);
-    border:1px solid var(--line-strong); border-radius:12px; overflow:hidden;
+    display:grid; grid-template-columns:repeat(2,1fr); gap:14px; background:transparent;
+    border:none; border-radius:0; overflow:visible;
   }
   .proj-tab{
-    background:rgba(240,180,41,0.10); border:none; cursor:pointer; padding:20px 16px;
+    background:rgba(255,255,255,0.03); cursor:pointer; padding:22px 16px;
     display:flex; flex-direction:column; align-items:center; text-align:center; gap:10px;
-    transition:background .15s ease, color .15s ease;
+    border-radius:12px; border-width:2px; border-style:solid;
+    transition:background .15s ease, color .15s ease, border-color .15s ease;
   }
   .proj-tab .ico{
-    width:38px; height:38px; border-radius:50%; border:1px solid rgba(240,180,41,0.4); color:var(--accent);
+    width:40px; height:40px; border-radius:50%; border:1px solid currentColor;
     display:flex; align-items:center; justify-content:center; transition:background .15s ease, color .15s ease, border-color .15s ease;
   }
-  .proj-tab .ico svg{ width:18px; height:18px; }
-  .proj-tab .t{ font-weight:800; font-size:14px; text-transform:uppercase; letter-spacing:0.01em; color:var(--ink); line-height:1.25; }
-  .proj-tab .c{ font-family:'JetBrains Mono',monospace; font-size:11.5px; color:var(--ink-soft); }
-  .proj-tab:not(.active):hover{ background:rgba(240,180,41,0.18); }
-  .proj-tab.active{ background:var(--accent); }
-  .proj-tab.active .ico{ border-color:#0a1229; color:#0a1229; background:rgba(10,18,41,0.14); }
-  .proj-tab.active .t, .proj-tab.active .c{ color:#0a1229; }
-  @media (max-width:520px){ .proj-tab{ padding:16px 10px; } .proj-tab .t{ font-size:12.5px; } }
+  .proj-tab .ico svg{ width:20px; height:20px; }
+  .proj-tab .t{ font-weight:800; font-size:clamp(16px,2vw,22px); text-transform:uppercase; letter-spacing:0.01em; line-height:1.25; }
+  .proj-tab .c{ font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--ink-soft); }
+
+  /* Комерційні об'єкти — жовтий текст у синій рамці */
+  .proj-tab.cat-commercial{ border-color:#4169ff; }
+  .proj-tab.cat-commercial .ico, .proj-tab.cat-commercial .t{ color:#f0b429; }
+  .proj-tab.cat-commercial:not(.active):hover{ background:rgba(65,105,255,0.16); }
+  .proj-tab.cat-commercial.active{ background:#4169ff; }
+  .proj-tab.cat-commercial.active .ico{ border-color:#f0b429; background:rgba(240,180,41,0.14); }
+  .proj-tab.cat-commercial.active .t{ color:#f0b429; }
+  .proj-tab.cat-commercial.active .c{ color:#dbe3ff; }
+
+  /* Відновлення інфраструктури — синій текст у жовтій рамці */
+  .proj-tab.cat-recovery{ border-color:#f0b429; }
+  .proj-tab.cat-recovery .ico, .proj-tab.cat-recovery .t{ color:#4169ff; }
+  .proj-tab.cat-recovery:not(.active):hover{ background:rgba(240,180,41,0.16); }
+  .proj-tab.cat-recovery.active{ background:#f0b429; }
+  .proj-tab.cat-recovery.active .ico{ border-color:#4169ff; background:rgba(65,105,255,0.14); }
+  .proj-tab.cat-recovery.active .t{ color:#1531a8; }
+  .proj-tab.cat-recovery.active .c{ color:#0a1229; }
+
+  @media (max-width:520px){ .proj-tabs{ gap:10px; } .proj-tab{ padding:16px 10px; } .proj-tab .t{ font-size:clamp(13px,4vw,16px); } }
 
   .proj-track-wrap{ position:relative; }
   .proj-panel{ display:none; }
@@ -696,28 +713,28 @@
     </div>
   </div>
   <div class="wrap">
-    <div class="proj-head">
-      <div class="proj-head-label">
-        <span class="k">Натисніть, щоб переглянути</span>
-        <h3>Оберіть напрямок проєктів</h3>
-      </div>
+    <div class="proj-head-label">
+      <span class="k">Натисніть, щоб переглянути</span>
+      <h3>Оберіть напрямок проєктів</h3>
+    </div>
+
+    <div class="proj-scope">
       <div class="proj-tabs-sticky">
         <div class="proj-tabs" role="tablist">
-          <button class="proj-tab active" data-target="cat-commercial">
+          <button class="proj-tab cat-commercial active" data-target="cat-commercial">
             <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 21v-6h6v6"/></svg></span>
             <span class="t">Комерційні об'єкти</span>
             <span class="c">11 проєктів</span>
           </button>
-          <button class="proj-tab" data-target="cat-recovery">
+          <button class="proj-tab cat-recovery" data-target="cat-recovery">
             <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 3 7v6c0 5 4 9 9 9s9-4 9-9V7l-9-5z"/><path d="M9 12l2 2 4-4"/></svg></span>
             <span class="t">Відновлення інфраструктури</span>
             <span class="c">10 проєктів</span>
           </button>
         </div>
       </div>
-    </div>
 
-    <div class="proj-track-wrap">
+      <div class="proj-track-wrap">
 
       <!-- КАТЕГОРІЯ 1: КОМЕРЦІЙНІ ОБ'ЄКТИ -->
       <div class="proj-panel active" id="cat-commercial">
@@ -1140,6 +1157,7 @@
         </div>
       </div>
 
+    </div>
     </div>
   </div>
 </section>
